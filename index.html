@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Odyssey - Launch Button</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0c0c1d;
+            font-family: 'Arial', sans-serif;
+        }
+        .launch-button {
+            position: relative;
+            padding: 20px 40px;
+            font-size: 24px;
+            color: #fff;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+        }
+        .launch-button:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            z-index: -1;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            border-radius: inherit;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .launch-button:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+        }
+        .launch-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.8);
+        }
+        .launch-button:hover:before {
+            opacity: 1;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+        }
+        .launch-button:hover:after {
+            animation: shine 1.5s infinite;
+        }
+        .launch-button:active {
+            transform: scale(0.98);
+        }
+        .launch-button span {
+            position: relative;
+            z-index: 1;
+        }
+        .launch-button .icon {
+            display: inline-block;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .launch-button:hover .icon {
+            transform: rotate(180deg);
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .launch-button:before {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <button class="launch-button">
+        <span class="icon">🚀</span>
+        <span>Launch Mission</span>
+    </button>
+
+    <script>
+        document.querySelector('.launch-button').addEventListener('click', function() {
+            this.style.animation = 'pulse 0.5s';
+            setTimeout(() => this.style.animation = '', 500);
+        });
+    </script>
+</body>
+</html>
